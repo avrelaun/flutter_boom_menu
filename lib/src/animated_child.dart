@@ -90,8 +90,8 @@ class AnimatedChild extends AnimatedWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width - 30,
-      height: 100.0,
-      padding: EdgeInsets.only(bottom: 50 - animation.value),
+      height: 80.0,
+      padding: EdgeInsets.only(bottom: 70 - animation.value),
       child: GestureDetector(
         onTap: _performAction,
         child: Card(
