@@ -62,41 +62,41 @@ class BoomMenu extends StatefulWidget {
   final Color titleColor;
   final Color subTitleColor;
 
-  BoomMenu({
-    this.children = const [],
-    this.scrollVisible = true,
-    this.title,
-    this.subtitle,
-    this.backgroundColor,
-    this.titleColor,
-    this.subTitleColor,
-    this.foregroundColor,
-    this.elevation = 6.0,
-    this.overlayOpacity = 0.8,
-    this.overlayColor = Colors.white,
-    this.animatedIcon,
-    this.animatedIconTheme,
-    this.child,
-    this.marginBottom = 0,
-    this.marginLeft = 16,
-    this.marginRight = 0,
-    this.onOpen,
-    this.onClose,
-    this.overlayVisible = false,
-    this.fabMenuBorder = const CircleBorder(),
-    this.fabAlignment = Alignment.centerRight,
-    this.fabPaddingRight = 0,
-    this.fabPaddingLeft = 0,
-    this.fabPaddingTop = 0,
-    this.onPress,
-    this.animationSpeed = 150
-  });
+  BoomMenu(
+      {this.children = const [],
+      this.scrollVisible = true,
+      this.title,
+      this.subtitle,
+      this.backgroundColor,
+      this.titleColor,
+      this.subTitleColor,
+      this.foregroundColor,
+      this.elevation = 6.0,
+      this.overlayOpacity = 0.8,
+      this.overlayColor = Colors.white,
+      this.animatedIcon,
+      this.animatedIconTheme,
+      this.child,
+      this.marginBottom = 0,
+      this.marginLeft = 16,
+      this.marginRight = 0,
+      this.onOpen,
+      this.onClose,
+      this.overlayVisible = false,
+      this.fabMenuBorder = const CircleBorder(),
+      this.fabAlignment = Alignment.centerRight,
+      this.fabPaddingRight = 0,
+      this.fabPaddingLeft = 0,
+      this.fabPaddingTop = 0,
+      this.onPress,
+      this.animationSpeed = 150});
 
   @override
   _BoomMenuState createState() => _BoomMenuState();
 }
 
-class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin {
+class _BoomMenuState extends State<BoomMenu>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
   bool _open = false;
@@ -110,8 +110,9 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
     );
   }
 
-  Duration _calculateMainControllerDuration() =>
-      Duration(milliseconds: widget.animationSpeed + widget.children.length * (widget.animationSpeed / 5).round());
+  Duration _calculateMainControllerDuration() => Duration(
+      milliseconds: widget.animationSpeed +
+          widget.children.length * (widget.animationSpeed / 5).round());
 
   @override
   void dispose() {
@@ -157,27 +158,28 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
           var childAnimation = Tween(begin: 0.0, end: 62.0).animate(
             CurvedAnimation(
               parent: this._controller,
-              curve: Interval(0, singleChildrenTween * (index + 1),
+              curve: Interval(
+                0,
+                singleChildrenTween * (index + 1),
               ),
             ),
           );
 
           return AnimatedChild(
-            animation: childAnimation,
-            index: index,
-            visible: _open,
-            backgroundColor: child.backgroundColor,
-            elevation: child.elevation,
-            child: child.child,
-            title: child.title,
-            subtitle: child.subtitle,
-            titleColor: child.titleColor,
-            subTitleColor : child.subTitleColor,
-            onTap: child.onTap,
-            toggleChildren: () {
-              if (!widget.overlayVisible) _toggleChildren();
-            }
-          );
+              animation: childAnimation,
+              index: index,
+              visible: _open,
+              backgroundColor: child.backgroundColor,
+              elevation: child.elevation,
+              child: child.child,
+              title: child.title,
+              subtitle: child.subtitle,
+              titleColor: child.titleColor,
+              subTitleColor: child.subTitleColor,
+              onTap: child.onTap,
+              toggleChildren: () {
+                if (!widget.overlayVisible) _toggleChildren();
+              });
         })
         .toList()
         .reversed
@@ -214,15 +216,16 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
     var fabChildren = _getChildrenList();
 
     var animatedFloatingButton = AnimatedFloatingButton(
-      visible: widget.scrollVisible,
-      backgroundColor: widget.backgroundColor,
-      foregroundColor: widget.foregroundColor,
-      elevation: widget.elevation,
-      onLongPress: _toggleChildren,
-      callback: (_open || widget.onPress == null) ? _toggleChildren : widget.onPress,
-      child: child,
-      shape: widget.fabMenuBorder
-    );
+        visible: widget.scrollVisible,
+        backgroundColor: widget.backgroundColor,
+        foregroundColor: widget.foregroundColor,
+        elevation: widget.elevation,
+        onLongPress: _toggleChildren,
+        callback: (_open || widget.onPress == null)
+            ? _toggleChildren
+            : widget.onPress,
+        child: child,
+        shape: widget.fabMenuBorder);
 
     return Positioned(
       left: widget.marginLeft + 16,
@@ -242,7 +245,7 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
                 child: animatedFloatingButton,
               ),
             ),*/
-          children: <Widget> [
+          children: <Widget>[
             SizedBox(height: kToolbarHeight + 40),
             Visibility(
               visible: _open,
