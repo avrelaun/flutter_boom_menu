@@ -36,62 +36,51 @@ class AnimatedChild extends AnimatedWidget {
   }
 
   Widget build(BuildContext context) {
-    final Animation<double> animation = listenable;
-
-    final Widget buttonChild = animation.value > 50.0
-        ? Container(
-            width: animation.value,
-            height: animation.value,
-            child: Row(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: child ?? Container(),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          title,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                              fontFamily: "Futura",
-                              color: (titleColor == null)
-                                  ? Colors.black
-                                  : titleColor,
-                              fontSize: 18.0),
-                        ),
-                        SizedBox(height: 4.0),
-                        Text(
-                          subtitle,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontFamily: "Futura",
-                              color: (subTitleColor == null)
-                                  ? Colors.black
-                                  : subTitleColor,
-                              fontSize: 12.0),
-                        )
-                      ],
-                    ),
+    final Widget buttonChild = Container(
+      child: Row(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: child ?? Container(),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    title,
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                        fontFamily: "Futura",
+                        color: (titleColor == null) ? Colors.black : titleColor,
+                        fontSize: 20.0),
                   ),
-                )
-              ],
+                  SizedBox(height: 4.0),
+                  Text(
+                    subtitle,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontFamily: "Futura",
+                        color: (subTitleColor == null)
+                            ? Colors.black
+                            : subTitleColor,
+                        fontSize: 14.0),
+                  )
+                ],
+              ),
             ),
           )
-        : Container(
-            width: 0.0,
-            height: 0.0,
-          );
+        ],
+      ),
+    );
 
     return Container(
       width: MediaQuery.of(context).size.width - 30,
-      height: 80.0 + animation.value,
-      padding: EdgeInsets.only(bottom: 70),
+      height: 90,
+      padding: EdgeInsets.only(bottom: 5),
       child: GestureDetector(
         onTap: _performAction,
         child: Card(

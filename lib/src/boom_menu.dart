@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'animated_child.dart';
 import 'animated_floating_button.dart';
@@ -249,10 +250,22 @@ class _BoomMenuState extends State<BoomMenu>
             SizedBox(height: kToolbarHeight + 40),
             Visibility(
               visible: _open,
-              child: Expanded(
-                child: ListView(
-                  children: List.from(fabChildren),
-                  reverse: true,
+              child: AnimationLimiter(
+                child: Expanded(
+                  child: ListView(
+                    reverse: true,
+                    shrinkWrap: true,
+                    children: AnimationConfiguration.toStaggeredList(
+                      duration: const Duration(milliseconds: 375),
+                      childAnimationBuilder: (widget) => SlideAnimation(
+                        verticalOffset: 50,
+                        child: FadeInAnimation(
+                          child: widget,
+                        ),
+                      ),
+                      children: List.from(fabChildren),
+                    ),
+                  ),
                 ),
               ),
             ),
