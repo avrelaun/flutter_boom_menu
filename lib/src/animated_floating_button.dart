@@ -13,7 +13,6 @@ class AnimatedFloatingButton extends StatelessWidget {
   final double elevation;
   final ShapeBorder shape;
   final Curve curve;
-  final bool isExtended = false;
 
   AnimatedFloatingButton({
     this.visible = true,
@@ -27,7 +26,6 @@ class AnimatedFloatingButton extends StatelessWidget {
     this.shape = const CircleBorder(),
     this.curve = Curves.linear,
     this.onLongPress,
-    this.isExtended,
   });
 
   @override
@@ -70,7 +68,6 @@ class AnimatedFloatingButton extends StatelessWidget {
                     elevation: elevation,
                     highlightElevation: elevation,
                     shape: shape,
-                     isExtended: isExtended,
                   ),
                 ),
               ),
