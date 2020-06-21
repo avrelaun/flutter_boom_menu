@@ -57,9 +57,6 @@ class BoomMenu extends StatefulWidget {
 
   /// The speed of the animation
   final int animationSpeed;
-  
-  // Whether the child widget should be extended
-  final bool isExtended = false;
 
   final String title;
   final String subtitle;
@@ -94,7 +91,6 @@ class BoomMenu extends StatefulWidget {
       this.fabPaddingTop = 0,
       this.onPress,
       this.animationSpeed = 150,
-       this.isExtended
       });
 
   @override
@@ -227,7 +223,6 @@ class _BoomMenuState extends State<BoomMenu>
         foregroundColor: widget.foregroundColor,
         elevation: widget.elevation,
         onLongPress: _toggleChildren,
-      isExtended: isExtended,
         callback: (_open || widget.onPress == null)
             ? _toggleChildren
             : widget.onPress,
