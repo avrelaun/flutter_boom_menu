@@ -2,36 +2,34 @@ import 'package:flutter/material.dart';
 
 class AnimatedChild extends AnimatedWidget {
   final int index;
-  final Color backgroundColor;
-  final double elevation;
-  final Widget child;
+  final Color? backgroundColor;
+  final Widget? child;
 
   final bool visible;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final VoidCallback toggleChildren;
-  final String title;
-  final String subtitle;
-  final Color titleColor;
-  final Color subTitleColor;
+  final String? title;
+  final String? subtitle;
+  final Color? titleColor;
+  final Color? subTitleColor;
 
   AnimatedChild(
-      {Key key,
-      Animation<double> animation,
-      this.index,
+      {Key? key,
+      required Animation<double> animation,
+      required this.index,
       this.backgroundColor,
-      this.elevation = 6.0,
       this.child,
       this.title,
       this.subtitle,
       this.visible = false,
       this.onTap,
-      this.toggleChildren,
+      required this.toggleChildren,
       this.titleColor,
       this.subTitleColor})
-      : super(key: key, listenable: animation);
+      : super (key: key, listenable: animation);
 
   void _performAction() {
-    if (onTap != null) onTap();
+    if (onTap != null) onTap!();
     toggleChildren();
   }
 
@@ -51,7 +49,7 @@ class AnimatedChild extends AnimatedWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    title,
+                    title ?? "",
                     overflow: TextOverflow.clip,
                     style: TextStyle(
                         fontFamily: "Futura",
@@ -60,7 +58,7 @@ class AnimatedChild extends AnimatedWidget {
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    subtitle,
+                    subtitle ?? "",
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontFamily: "Futura",

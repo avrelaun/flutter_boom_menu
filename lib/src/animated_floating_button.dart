@@ -3,13 +3,13 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class AnimatedFloatingButton extends StatelessWidget {
   final bool visible;
-  final VoidCallback callback;
-  final VoidCallback onLongPress;
-  final Widget child;
-  final Color backgroundColor;
-  final Color foregroundColor;
-  final String tooltip;
-  final String heroTag;
+  final VoidCallback? callback;
+  final VoidCallback? onLongPress;
+  final Widget? child;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final String? tooltip;
+  final String? heroTag;
   final double elevation;
   final ShapeBorder shape;
   final Curve curve;
@@ -17,7 +17,7 @@ class AnimatedFloatingButton extends StatelessWidget {
   AnimatedFloatingButton({
     this.visible = true,
     this.callback,
-    this.child,
+    required this.child,
     this.backgroundColor,
     this.foregroundColor,
     this.tooltip,

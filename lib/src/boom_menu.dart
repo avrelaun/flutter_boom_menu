@@ -14,8 +14,8 @@ class BoomMenu extends StatefulWidget {
   /// Used to get the button hidden on scroll. See examples for more info.
   final bool scrollVisible;
 
-  final Color backgroundColor;
-  final Color foregroundColor;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
   final double elevation;
   final ShapeBorder fabMenuBorder;
   final Alignment fabAlignment;
@@ -35,22 +35,22 @@ class BoomMenu extends StatefulWidget {
   final double overlayOpacity;
 
   /// The animated icon to show as the main button child. If this is provided the [child] is ignored.
-  final AnimatedIconData animatedIcon;
+  final AnimatedIconData? animatedIcon;
 
   /// The theme for the animated icon.
-  final IconThemeData animatedIconTheme;
+  final IconThemeData? animatedIconTheme;
 
   /// The child of the main button, ignored if [animatedIcon] is non [null].
-  final Widget child;
+  final Widget? child;
 
   /// Executed when the dial is opened.
-  final VoidCallback onOpen;
+  final VoidCallback? onOpen;
 
   /// Executed when the dial is closed.
-  final VoidCallback onClose;
+  final VoidCallback? onClose;
 
   /// Executed when the dial is pressed. If given, the dial only opens on long press!
-  final VoidCallback onPress;
+  final VoidCallback? onPress;
 
   /// If true user is forced to close dial manually by tapping main button. WARNING: If true, overlay is not rendered.
   final bool overlayVisible;
@@ -58,10 +58,10 @@ class BoomMenu extends StatefulWidget {
   /// The speed of the animation
   final int animationSpeed;
 
-  final String title;
-  final String subtitle;
-  final Color titleColor;
-  final Color subTitleColor;
+  final String? title;
+  final String? subtitle;
+  final Color? titleColor;
+  final Color? subTitleColor;
 
   BoomMenu(
       {this.children = const [],
@@ -99,7 +99,7 @@ class BoomMenu extends StatefulWidget {
 
 class _BoomMenuState extends State<BoomMenu>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   bool _open = false;
 
@@ -145,9 +145,9 @@ class _BoomMenuState extends State<BoomMenu>
     setState(() {
       _open = newValue;
     });
-    if (newValue && widget.onOpen != null) widget.onOpen();
+    if (newValue && widget.onOpen != null) widget.onOpen!();
     _performAnimation();
-    if (!newValue && widget.onClose != null) widget.onClose();
+    if (!newValue && widget.onClose != null) widget.onClose!();
   }
 
   List<Widget> _getChildrenList() {
@@ -172,7 +172,6 @@ class _BoomMenuState extends State<BoomMenu>
               index: index,
               visible: _open,
               backgroundColor: child.backgroundColor,
-              elevation: child.elevation,
               child: child.child,
               title: child.title,
               subtitle: child.subtitle,
@@ -208,7 +207,7 @@ class _BoomMenuState extends State<BoomMenu>
   Widget _renderButton() {
     var child = widget.animatedIcon != null
         ? AnimatedIcon(
-            icon: widget.animatedIcon,
+            icon: widget.animatedIcon!,
             progress: _controller,
             color: widget.animatedIconTheme?.color,
             size: widget.animatedIconTheme?.size,
@@ -295,9 +294,8 @@ class _BoomMenuState extends State<BoomMenu>
     ];
 
     return Stack(
-      alignment: Alignment.bottomRight,
+      clipBehavior: Clip.none, alignment: Alignment.bottomRight,
       fit: StackFit.expand,
-      overflow: Overflow.visible,
       children: children,
     );
   }
