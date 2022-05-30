@@ -9,7 +9,7 @@ import 'boom_menu_item.dart';
 /// Builds the Speed Dial
 class BoomMenu extends StatefulWidget {
   /// Children buttons, from the lowest to the highest.
-  final List<MenuItem> children;
+  final List<BoomMenuItem> children;
 
   /// Used to get the button hidden on scroll. See examples for more info.
   final bool scrollVisible;
@@ -154,7 +154,7 @@ class _BoomMenuState extends State<BoomMenu>
     final singleChildrenTween = 1.0 / widget.children.length;
 
     return widget.children
-        .map((MenuItem child) {
+        .map((BoomMenuItem child) {
           int index = widget.children.indexOf(child);
 
           var childAnimation = Tween(begin: 0.0, end: 62.0).animate(

@@ -51,7 +51,7 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
         overlayColor: Colors.black,
         overlayOpacity: 0.7,
         children: [
-          MenuItem(
+          BoomMenuItem(
 //          child: Icon(Icons.accessibility, color: Colors.black, size: 40,),
             child: Image.asset('assets/logout_icon.png', color: Colors.grey[850]),
             title: "Logout",
@@ -61,7 +61,7 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
             backgroundColor: Colors.grey[50],
             onTap: () => print('THIRD CHILD'),
           ),
-          MenuItem(
+          BoomMenuItem(
             child: Image.asset('assets/schemes_icon.png', color: Colors.white),
             title: "List",
             titleColor: Colors.white,
@@ -70,7 +70,7 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
             backgroundColor: Colors.pinkAccent,
             onTap: () => print('FOURTH CHILD'),
           ),
-          MenuItem(
+          BoomMenuItem(
             child: Image.asset('assets/customers_icon.png', color: Colors.grey[850]),
             title: "Team",
             titleColor: Colors.grey[850],
@@ -79,7 +79,7 @@ class MyAppState extends State<MyApp> with TickerProviderStateMixin {
             backgroundColor: Colors.grey[50],
             onTap: () => print('THIRD CHILD'),
           ),
-          MenuItem(
+          BoomMenuItem(
             child: Image.asset('assets/profile_icon.png', color: Colors.white),
             title: "Profile",
             titleColor: Colors.white,

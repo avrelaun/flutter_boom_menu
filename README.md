@@ -29,7 +29,7 @@ Widget build(BuildContext context) {
       overlayColor: Colors.black,
       overlayOpacity: 0.7,
       children: [
-        MenuItem(
+        BoomMenuItem(
           child: Icon(Icons.accessibility, color: Colors.black),
           title: "Profiles",
           titleColor: Colors.white,
@@ -38,7 +38,7 @@ Widget build(BuildContext context) {
           backgroundColor: Colors.deepOrange,
           onTap: () => print('FIRST CHILD'),
         ),
-        MenuItem(
+        BoomMenuItem(
           child: Icon(Icons.brush, color: Colors.black),
           title: "Profiles",
           titleColor: Colors.white,
@@ -47,7 +47,7 @@ Widget build(BuildContext context) {
           backgroundColor: Colors.green,
           onTap: () => print('SECOND CHILD'),
         ),
-        MenuItem(
+        BoomMenuItem(
           child: Icon(Icons.keyboard_voice, color: Colors.black),
           title: "Profile",
           titleColor: Colors.white,
@@ -56,7 +56,7 @@ Widget build(BuildContext context) {
           backgroundColor: Colors.blue,
           onTap: () => print('THIRD CHILD'),
         ),
-        MenuItem(
+        BoomMenuItem(
           child: Icon(Icons.ac_unit, color: Colors.black),
           title: "Profiles",
           titleColor: Colors.white,

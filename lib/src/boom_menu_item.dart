@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Provides data for a speed dial child
-class MenuItem {
+class BoomMenuItem {
   final Widget? child;
   final Color? backgroundColor;
   final VoidCallback? onTap;
@@ -10,7 +10,7 @@ class MenuItem {
   final Color? titleColor;
   final Color? subTitleColor;
 
-  MenuItem({
+  BoomMenuItem({
     this.child,
     required this.title,
     this.subtitle,

@@ -10,7 +10,7 @@
 ## 1.0.0
 
 * Now user can set alignment and padding to FAB.
-* A better way of handling vertical overflows any MenuItem number is now supported.
+* A better way of handling vertical overflows any BoomMenuItem number is now supported.
 
 ## 0.0.2
 
